@@ -8,9 +8,9 @@
 function readFiles(files){
 
     var output = [];
-    for (var i = 0, f; f=files[i];i++){
+    for (var i = 0, f; f = files[i]; i++){
         output.push('<li><strong>',escape(f.name),'</strong>(',f.type || 'n/a',') - ',
-                f.size,'bytes,last modified:',
+                f.size,'bytes,last modified: ',
                 f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
                 '</li>');
     }
@@ -43,17 +43,17 @@ function handleFileSelect(evt){
 
     var files =evt.target.files;
 
-    readFlies(files);
+  	readFiles(files);
 
 }
 
-function hamdleFileSelect_drag(evt){
+function handleFileSelect_drag(evt){
 
     evt.stopPropagation();
     evt.preventDefault();
     var files = evt.dataTransfer.files;
 
-    readFlies(files);
+    readFiles(files);
 
 }
 
@@ -68,7 +68,7 @@ function handleDragOver (evt){
 function start(e) {
     document.getElementById('files').addEventListener('change',handleFileSelect,false);
 
-    var dropZone = document.getElementById('drop_Zone');
+    var dropZone = document.getElementById('drop_zone');
     dropZone.addEventListener('dragover',handleDragOver,false);
     dropZone.addEventListener('drop',handleFileSelect_drag,false);
 }
